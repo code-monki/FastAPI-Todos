@@ -1,0 +1,6 @@
+.DS_Store
+__pycache__
+.venv
+alembic/__pycache__
+alembic/versions/__pycache__
+routers/__pycache__
