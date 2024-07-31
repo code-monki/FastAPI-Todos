@@ -1,5 +1,6 @@
 from database import Base
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
+from sqlalchemy.orm import relationship
 
 class Users(Base):
     __tablename__ = 'users'
@@ -14,6 +15,7 @@ class Users(Base):
     role = Column(String)
     phone_number = Column(String)
 
+    todos = relationship("Todos", back_populates="owner")
 
 class Todos(Base):
     __tablename__ = 'todos'
@@ -25,3 +27,4 @@ class Todos(Base):
     complete = Column(Boolean, default=False)
     owner_id = Column(Integer, ForeignKey("users.id"))
 
+    owner = relationship("Users", back_populates="todos")
